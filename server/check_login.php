@@ -8,23 +8,20 @@ $email = $_POST['username'];
 $clave = $_POST['password'];
 
 if ($response['conexion']=='OK') {
-    $resultado_consulta = $con->consultar(['nu_usuarios'],['email', 'clave'], 'WHERE email="'.$email.'"');
+    $resultado_consulta = $con->consultar(['nu_usuarios'],['id','email', 'clave'], 'WHERE email="'.$email.'"');
 
     if ($resultado_consulta->num_rows != 0) {
         $fila = $resultado_consulta->fetch_assoc();
         if (password_verify($clave, $fila['clave'])) {
-            $response['acceso'] = 'concedido';
             $response['msg'] = 'OK';
             session_start();
-            $_SESSION['username']=$fila['email'];
+            $_SESSION['id_user']=$fila['id'];
+            //$_SESSION['username']=$fila['email'];
         }else {
-            $response['motivo'] = 'Contraseña incorrecta';
-            $response['acceso'] = 'rechazado';
-            $response['msg'] = 'ERROR';
+            $response['msg'] = 'Contraseña incorrecta';
         }
     }else{
-        $response['motivo'] = 'Email incorrecto';
-        $response['acceso'] = 'rechazado';
+        $response['msg'] = 'Usuario incorrecto';
     }
 }
 echo json_encode($response);
