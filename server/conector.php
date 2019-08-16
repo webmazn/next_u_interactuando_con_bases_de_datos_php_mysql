@@ -23,6 +23,7 @@ class ConectorDB{
     }
 
     function ejecutarQuery($query){
+        //echo $query;
         return $this->conexion->query($query);
     }
 

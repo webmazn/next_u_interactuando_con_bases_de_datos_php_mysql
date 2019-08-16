@@ -109,10 +109,6 @@ class EventsManager {
                 end: $('#end_date').val()+" "+$('#end_hour').val()
               })
             }
-
-
-
-
           }else {
             alert(data.msg)
           }
@@ -121,7 +117,6 @@ class EventsManager {
           alert("error en la comunicación con el servidor");
         }
       })
-
     }
 
     eliminarEvento(event, jsEvent){
