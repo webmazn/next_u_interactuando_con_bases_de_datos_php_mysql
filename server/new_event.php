@@ -19,7 +19,7 @@ if ($response['conexion']=='OK') {
     if($con->insertData('nu_eventos', $data)){
         $response['msg'] = 'OK';
     }else{
-        $response['msg'] = 'No se registraron los datos';
+        $response['msg'] = 'No se registraró el evento';
     }
 }
 
