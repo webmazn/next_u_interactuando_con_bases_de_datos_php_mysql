@@ -13,7 +13,7 @@ $data['fec_inicio'] = "'".$_POST['start_date']."'";
 $data['hor_inicio'] = "'".$_POST['start_hour']."'";
 $data['fec_fin'] = "'".$_POST['end_date']."'";
 $data['hor_fin'] = "'".$_POST['end_hour']."'";
-$data['dia_completo'] = ($_POST['allDay']=='true')?"'1'":"'0'";
+$data['dia_completo'] = ($_POST['allDay']=='true')?1:0;
 
 if ($response['conexion']=='OK') {
     if($con->insertData('nu_eventos', $data)){

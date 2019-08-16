@@ -1,5 +1,4 @@
 <?php
-session_start();
 require('conector.php');
 
 $con = new ConectorDB();

@@ -35,32 +35,6 @@ class ConectorDB{
         $this->conexion->close();
     }
 
-    function newTable($nombre_tbl, $campos){
-        $sql = 'CREATE TABLE '.$nombre_tbl.' (';
-        $length_array = count($campos);
-        $i = 1;
-        foreach ($campos as $key => $value) {
-            $sql .= $key.' '.$value;
-                if ($i!= $length_array) {
-                    $sql .= ', ';
-                }else {
-                    $sql .= ');';
-                }
-            $i++;
-        }
-        return $this->ejecutarQuery($sql);
-    }
-
-    function nuevaRestriccion($tabla, $restriccion){
-        $sql = 'ALTER TABLE '.$tabla.' '.$restriccion;
-        return $this->ejecutarQuery($sql);
-    }
-
-    function nuevaRelacion($from_tbl, $to_tbl, $from_field, $to_field){
-        $sql = 'ALTER TABLE '.$from_tbl.' ADD FOREIGN KEY ('.$from_field.') REFERENCES '.$to_tbl.'('.$to_field.');';
-        return $this->ejecutarQuery($sql);
-    }
-
     function insertData($tabla, $data){
         $sql = 'INSERT INTO '.$tabla.' (';
         $i = 1;
@@ -156,5 +130,33 @@ class ConectorDB{
         }
         return $this->ejecutarQuery($sql);
     }
+
+    /*
+    function newTable($nombre_tbl, $campos){
+        $sql = 'CREATE TABLE '.$nombre_tbl.' (';
+        $length_array = count($campos);
+        $i = 1;
+        foreach ($campos as $key => $value) {
+            $sql .= $key.' '.$value;
+                if ($i!= $length_array) {
+                    $sql .= ', ';
+                }else {
+                    $sql .= ');';
+                }
+            $i++;
+        }
+        return $this->ejecutarQuery($sql);
+    }
+
+    function nuevaRestriccion($tabla, $restriccion){
+        $sql = 'ALTER TABLE '.$tabla.' '.$restriccion;
+        return $this->ejecutarQuery($sql);
+    }
+
+    function nuevaRelacion($from_tbl, $to_tbl, $from_field, $to_field){
+        $sql = 'ALTER TABLE '.$from_tbl.' ADD FOREIGN KEY ('.$from_field.') REFERENCES '.$to_tbl.'('.$to_field.');';
+        return $this->ejecutarQuery($sql);
+    }
+    */    
 }
 ?>  
