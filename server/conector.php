@@ -27,6 +27,9 @@ class ConectorDB{
         return $this->conexion->query($query);
     }
 
+    function lastInsertID(){
+        return $this->conexion->insert_id;    
+    }
     function getErrorQuery(){
         return mysqli_error($this->conexion);
     }

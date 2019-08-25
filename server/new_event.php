@@ -17,7 +17,8 @@ $data['dia_completo'] = ($_POST['allDay']=='true')?1:0;
 
 if ($response['conexion']=='OK') {
     if($con->insertData('nu_eventos', $data)){
-        $response['msg'] = 'OK';
+        $response['id'] = $con->lastInsertID();
+        $response['msg'] = 'OK';        
     }else{
         $response['msg'] = 'No se registraró el evento';
     }
